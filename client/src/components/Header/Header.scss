@@ -1,0 +1,20 @@
+
+.container{
+  display: flex;
+  background: none;
+}
+.imagewrapper{
+  flex:1;
+
+  img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95vw;
+    height: initial;
+    opacity: 1;
+    margin-left: auto;
+    margin-right: auto;
+ 
+  }
+}
