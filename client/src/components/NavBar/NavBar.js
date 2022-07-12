@@ -8,7 +8,7 @@ const NavBar = () => {
 
         <div className="app__navbar-links">
           <Link to = "/plants"> Shop </Link>
-          <a href = {`#ourvalues`}>Our values</a>
+          <a href = {`#ourvalues`} replace>Our values</a>
           <a href = {`#contact`}>Contact</a>
         </div>
 

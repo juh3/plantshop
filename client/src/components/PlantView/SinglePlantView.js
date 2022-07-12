@@ -2,23 +2,24 @@ import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import imageurl from './pothos-scindapsus-aurens-s.jpg'
 import './SinglePlantView.scss'
-// Placeholder products before implementing backend stuff
+// Placeholder plants before implementing backend stuff
 import WestIcon from '@mui/icons-material/West';
 import { IconButton } from '@mui/material';
-const products = [
-  {id: 1, family: 'Philodendron', name:'Micans', description: 'Ugly ass plant', price: '10.99'},
-  {id: 2, family: 'Monstera', name: 'Deliciosa', description: 'Swiss cheese plant', price: '15.00' },
-  {id: 3, family: 'Alocasia', name: 'Dragon Scale', description: 'dfada', price: '20.00'},
-  {id: 4, family: 'Philodendron',name: 'Magnificum', description: 'yepeyp', price: '49.99'},
-]
+import { useQuery } from '@apollo/client';
+import { FIND_PLANT } from '../../apollo/queries';
 
 
 const SinglePlantView = () => {
   const {id} = useParams()
   let navigate = useNavigate()
   const idnumber = parseInt(id)
- 
-  const product = products.find(x => x.id === idnumber)
+
+  const { data, loading } = useQuery( FIND_PLANT, {fetchPolicy: 'cache-and-network', variables: { id: idnumber }})
+  if(loading){
+    return <p> loading data...</p>
+  }
+  const plant = data.findPlant
+  
 
   return (
     <div className='spw__main'>
@@ -32,11 +33,11 @@ const SinglePlantView = () => {
       </div>
 
       <div className='right'>
-        <h4> {product.family}</h4>
-        <h3> {product.name}</h3>
-        <p> {product.price} €</p>
+        <h4> {plant.family}</h4>
+        <h3> {plant.name}</h3>
+        <p> {plant.price} €</p>
         <hr/>
-        <p style={{ marginTop: 40}}> {product.description} </p>
+        <p style={{ marginTop: 40}}> {plant.description} </p>
 
         <button style={{ marginTop: 20}}> Add to Cart </button>
       </div>

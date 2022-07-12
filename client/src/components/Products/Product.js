@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const Product = ({ product }) => {
   const productid = product.id
   return (
-    <Card sx = {{ maxHeight: 600, maxWidth: 300, marginTop: 12, marginLeft: 8, height:'100%'}} >
+    <Card sx = {{ maxHeight: 600, maxWidth: 300, marginTop: 4, marginBottom: 2, marginLeft: 8, height:'100%', boxShadow: '0 0 10px rgba(0, 0, 0, 0.4)'}} >
       <CardActionArea
         component = { Link }
         to = {`/plants/${productid}`}

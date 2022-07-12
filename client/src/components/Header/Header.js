@@ -23,8 +23,8 @@ const Header = () => {
         </div>
       </div>
 
-      <div className='container'>
-        <div>
+      <div className='mission'>
+        <div id = "ourvalues" className='wrapper'>
           <h1>Our mission</h1>
           <p> We, at Ball of Roots, find it very important to act as environmentally conscious as possible.</p>
           <p> That's why all of our plants grow under renewable electricity with minimum water wastage.</p>
