@@ -1,0 +1,43 @@
+
+.spw__main{
+  display: flex;
+  background-color: #e9edebff;
+  
+  .left{
+    flex: 0.6;
+    align-items: center;
+    justify-content: center;
+
+    .imgContainer{
+      display: flex;
+      justify-content: flex-end;
+      align-items: right;
+      width: 60%;
+      height: 60%;
+      margin-top: 5rem;
+      img{
+        object-fit: cover;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        border: solid, 5px;
+        border-radius: 5%
+      }
+    }
+    
+  }
+
+  .right{
+    flex-shrink: 0;
+    margin-top: 10rem;
+
+    h4{
+      font-size: 24px;
+    }
+    h3{
+      font-size: 30px;
+    }
+    p{
+      font-size: 20px;
+    }
+
+  }
+}
