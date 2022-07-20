@@ -11,14 +11,14 @@ import AddIcon from '@mui/icons-material/Add';
 
 const SinglePlantView = ({ addToCart }) => {
   const {id} = useParams()
+  console.log(id)
   let navigate = useNavigate()
-  const idnumber = parseInt(id)
-  const { data, loading } = useQuery( FIND_PLANT, {fetchPolicy: 'cache-and-network', variables: { id: idnumber }})
+  const { data, loading } = useQuery( FIND_PLANT, {fetchPolicy: 'cache-and-network', variables: { id: id }})
   if(loading){
     return <p> loading data...</p>
   }
   const plant = data.findPlant
-  
+  console.log(plant)
 
   return (
     <div className='spw__main'>
@@ -53,7 +53,7 @@ const SinglePlantView = ({ addToCart }) => {
           </div>
 
           <Button style={{ marginLeft: '3rem', backgroundColor: 'rgb(216, 195, 74)', fontFamily:'Roboto sans-serif', color: 'black'}} variant= "contained" 
-            onClick = {() => addToCart(idnumber)}> Add to Cart </Button>
+            onClick = {() => addToCart(id)}> Add to Cart </Button>
 
         </div>
       </div>

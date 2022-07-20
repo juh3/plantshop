@@ -14,12 +14,13 @@ export const GET_PLANTS = gql`
 `
 
 export const FIND_PLANT = gql`
-  query FindPlant( $id: Int!) {
+  query FindPlant( $id: ID!) {
     findPlant( id: $id) {
       family
       name
       description
       price
       imageUrl
+      id
     }
   }`

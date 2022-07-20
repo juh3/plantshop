@@ -9,7 +9,7 @@ const Products = ({ addToCart}) => {
   if(loading) {
     return <p> loading...</p>
   }
-
+  console.log(plants)
   const filterings = [ "All", "Anthurium", "Philodendron", "Alocasia", "Monstera"]
   return(
     <div style={{flexGrow: 1}}>
