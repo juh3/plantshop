@@ -1,11 +1,11 @@
 import React from 'react'
 import Products from '../Products/Products'
 import './Shop.scss'
-const Shop = () => {
+const Shop = ( {addToCart}) => {
   return (
     <div className='app__shop_main'>
       <div className='app_shop_bg'>
-        <Products/>
+        <Products addToCart = {addToCart}/>
       </div>
     </div>
   )

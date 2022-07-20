@@ -2,6 +2,7 @@ import React from 'react'
 import './Header.scss'
 import headerpic from './headerpic.jpg'
 import { useNavigate } from 'react-router-dom'
+import Newsletter from '../Newsletter/Newsletter'
 
 const Header = () => {
   let navigate = useNavigate()
@@ -32,6 +33,8 @@ const Header = () => {
           <p> Did you know we offset the carbon produced during shipping ?</p>
         </div>
       </div>
+
+      <Newsletter />
       </div>
 
   )

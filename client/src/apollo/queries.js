@@ -8,6 +8,7 @@ export const GET_PLANTS = gql`
       name
       description
       price
+      imageUrl
     }
   }
 `
@@ -19,5 +20,6 @@ export const FIND_PLANT = gql`
       name
       description
       price
+      imageUrl
     }
   }`
