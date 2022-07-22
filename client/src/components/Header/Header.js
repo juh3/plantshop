@@ -20,7 +20,7 @@ const Header = () => {
  
         <div className='hero-text'>
           <h1> Buy our beautiful plants </h1>
-          <button  onClick = {handleShop}> Shop Now</button>
+          <button  onClick = {handleShop} id ='shopAction'> Shop Now</button>
         </div>
       </div>
 

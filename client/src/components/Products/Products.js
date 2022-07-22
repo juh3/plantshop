@@ -28,7 +28,7 @@ const Products = ({ addToCart}) => {
       </div>
       <Grid container justifyContent = "center" alignItems='center' spacing = {4}>
         {plants.map(( product) => (
-          <Grid style = {{ display:'flex' }} item key = {product.id} xs = {24} sm = {18} md = {12} lg = {3}>
+          <Grid style = {{ display:'flex', alignContent: 'space-evenly' }} item key = {product.id} xs = {24} sm = {18} md = {12} lg = {3}>
             <Product product = {product} addToCart = {addToCart}/>
           </Grid>
         ))}

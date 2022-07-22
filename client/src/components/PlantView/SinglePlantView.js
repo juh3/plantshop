@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import './SinglePlantView.scss'
 import WestIcon from '@mui/icons-material/West';
-import { IconButton, Button } from '@mui/material';
+import { IconButton, Button, containerClasses } from '@mui/material';
 import { useQuery } from '@apollo/client';
 import { FIND_PLANT } from '../../apollo/queries';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -20,12 +20,24 @@ const SinglePlantView = ({ addToCart }) => {
   const plant = data.findPlant
   console.log(plant)
 
+  const updateValue = (action) => {
+    var input = document.getElementById('quantity')
+    if( action === 'increment'){
+      var count = parseInt(input.value) +1
+    }else{
+      var count = parseInt(input.value) - 1
+    }
+    count = count < 1 ? 1 : count
+    input.value = count
+  }
   return (
     <div className='spw__main'>
-      <div className='left'>
+      <div className='arrow'>
         <IconButton onClick = {() => {navigate('/plants')}} aria-label = "Return" size="large">
-          <WestIcon fontSize='inherit' />
+            <WestIcon fontSize='inherit' />
         </IconButton>
+      </div>
+      <div className='left'>
         <div className='imgContainer'>
           <img src = {`${plant.imageUrl}`} alt = 'plant' />
         </div>  
@@ -42,18 +54,18 @@ const SinglePlantView = ({ addToCart }) => {
         <div className='quantity'>
 
           <div className='inputgroup'>
-            <IconButton onClick = {() => {console.log('moi')}}>
+            <IconButton onClick = {() => {updateValue('decrement')}} >
               <RemoveIcon />
             </IconButton>
 
             <input type = "number" value= "1" min = "1" max = "10" aria-label='quantity' id = 'quantity' />
-            <IconButton  onClick = {() =>{console.log('moi')}}>
+            <IconButton  onClick = {() =>{updateValue('increment')}}>
               <AddIcon />
             </IconButton>
           </div>
 
-          <Button style={{ marginLeft: '3rem', backgroundColor: 'rgb(216, 195, 74)', fontFamily:'Roboto sans-serif', color: 'black'}} variant= "contained" 
-            onClick = {() => addToCart(id)}> Add to Cart </Button>
+          <Button style={{ marginLeft: '3rem', backgroundColor: 'rgb(216, 195, 74)', fontFamily:'Roboto, sans-serif', color: 'black'}} variant= "contained" 
+            onClick = {() => addToCart(id, parseInt(document.getElementById('quantity').value))}> Add to Cart </Button>
 
         </div>
       </div>

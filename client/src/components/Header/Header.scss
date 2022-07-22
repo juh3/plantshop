@@ -49,6 +49,7 @@
     display: inline-block;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
     &:active{
       top: 2px;
       transition: all 1s ease;
@@ -84,3 +85,4 @@
     }
   }
 }
+

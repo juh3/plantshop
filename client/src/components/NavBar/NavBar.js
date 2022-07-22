@@ -2,17 +2,25 @@ import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import './NavBar.scss'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import {IconButton} from '@mui/material'
+import {IconButton, Button} from '@mui/material'
 import {motion} from 'framer-motion'
+import DeleteIcon from '@mui/icons-material/Delete';
 import { HiX } from 'react-icons/hi'
-const NavBar = ({ cart }) => {
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
+
+const NavBar = ({ cart, handleDelete, changeQuantity }) => {
   const [toggle, setToggle] = useState(false)
   let total = 0
-  if( cart.length !==0){
-    total = cart.reduce( (previousValue, currentValue) =>
-    currentValue.quantity*currentValue.price ,total
+  
+  if( cart?.length !==0){
+    total = cart?.reduce( (previousValue, currentValue) =>
+    currentValue.quantity*currentValue.price + previousValue ,total
     )
   }
+  let format = 0
+
+  format = Math.round(total*100)/100
   return (
       <div className="app__navbar">
         <Link to = "/" className='logo'> BALL OF ROOTS </Link>
@@ -34,17 +42,32 @@ const NavBar = ({ cart }) => {
             transition = {{ duration: 0.85, ease: 'easeOut'}}>
               <HiX onClick={() => {setToggle(false)}} />
               { cart.length === 0 && <p> Cart is empty</p>}
-
              <ul>
                 {cart.map( (item) => (
   
                   <li key = {item.id}>
                     <img src = {`${item.imageUrl}`} alt = "product" />
-                      <p> {item.family} {item.name}</p>
-                      <p> {item.quantity} </p>
+                    <IconButton id ='itembutton' aria-label = "deletefromcart" size = 'small' onClick = { () => {handleDelete(item.id)}}>
+                          <DeleteIcon />
+                        </IconButton>
+
+                      <span className = 'cart__item'> {item.family} {item.name}</span>
+                      
+                      <span className='cart__item_buttons'>
+                        <IconButton id ='itembutton' onClick = { () => {changeQuantity('decrement', item.id, 1)}}>
+                        <RemoveIcon />
+                      </IconButton>
+                      {item.quantity}
+
+                        <IconButton id ='itembutton' onClick = { () => {changeQuantity('increment', item.id, 1)}}>
+                          <AddIcon />
+                        </IconButton>
+                      </span>
+
                   </li>
                 ))}
-                { cart.length !== 0 && <p> Total: {total} €</p>}
+                { cart.length !== 0 && <p style={{ fontfamily: 'Roboto', fontWeight: 550}}> Total: {format} €</p>}
+                { cart.length !== 0 && <Button variant = "contained"> I'm ready to order</Button>}
               </ul>
           </motion.div>
         </div>}
