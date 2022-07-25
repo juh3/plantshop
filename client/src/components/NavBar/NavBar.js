@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './NavBar.scss'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {IconButton, Button} from '@mui/material'
@@ -10,6 +10,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 
 const NavBar = ({ cart, handleDelete, changeQuantity }) => {
+  let navigate = useNavigate()
   const [toggle, setToggle] = useState(false)
   let total = 0
   
@@ -67,7 +68,7 @@ const NavBar = ({ cart, handleDelete, changeQuantity }) => {
                   </li>
                 ))}
                 { cart.length !== 0 && <p style={{ fontfamily: 'Roboto', fontWeight: 550}}> Total: {format} €</p>}
-                { cart.length !== 0 && <Button variant = "contained"> I'm ready to order</Button>}
+                { cart.length !== 0 && <Button variant = "contained" onClick={() => {navigate('/cart')}}> I'm ready to order</Button>}
               </ul>
           </motion.div>
         </div>}

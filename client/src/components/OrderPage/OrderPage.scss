@@ -1,0 +1,50 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.orderpage__main{
+  width: 100vw;
+  height: 81.9vh;
+
+  h1{
+    margin-top: 6rem;
+    margin-left: 5rem;
+  }
+  hr{
+    margin-left: 0rem;
+  }
+
+  .orderpage__input_container{
+    margin-left: 10rem;
+    margin-right: 10rem;
+    display: flex;
+    flex-direction: column;
+
+    .orderpage__input_name{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      input{
+        margin-left: 2rem;
+        margin-top: 2rem;
+
+        height: 3rem;
+        width: 60rem;
+      }
+     
+    }
+
+    Button{
+      margin-top: 1rem;
+      background-color:  rgb(216, 195, 74);
+      font-family: 'Roboto', sans-serif;
+      font-weight: 600;
+      color: black;
+      
+      &:hover{
+        background-color: rgba(216, 195, 74, 0.5);
+      }
+    }
+  }
+}

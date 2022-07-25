@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import SinglePlantView from './components/PlantView/SinglePlantView'
 import usePlants from './hooks/usePlants'
 import Footer from './components/Footer/Footer'
+import OrderPage from './components/OrderPage/OrderPage'
 
 
 const App = () => {
@@ -76,6 +77,7 @@ const App = () => {
           <Route path = "*" element = {<Header />} exact />
           <Route path = "/plants" element = {<Shop addToCart = {addToCart}/>} replace />
           <Route path = "/plants/:id" element = {< SinglePlantView addToCart = {addToCart} />} replace/>
+          <Route path ="/cart" element = { <OrderPage cart = {cart}/>} replace />
         </Routes>
         <Footer />
       </div>
