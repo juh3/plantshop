@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 .app__navbar{
   background-color: rgba(101, 145, 87,0.9);
@@ -16,19 +21,31 @@
   box-shadow: 0 0 4px grey;
   overflow-y: hidden;
   z-index:10;
-
+  @media screen and (max-width: 992px){
+    flex-direction: column;
+    
+  }
 }
 
 .logo{
   display: flex;
-  font-family: 'Bungee Inline', cursive;
+  font-family: 'Oswald', cursive;
   font-size: 35px;
   color: white;
   justify-content: flex-start;
   margin-left: 4rem;
   align-items: center;
   text-decoration: none;
-
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  transition: all 0.15s ease-in-out;
+  @media screen and (max-width: 992px){
+    margin: 0;
+  }
+  &:hover{
+    transition: 'ease-in-out', 1.5s;
+    color: rgb(105, 105, 92);
+  }
 }
 
 .app__navbar-links{
@@ -36,20 +53,28 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  a{
-    font-family: 'Bungee Inline', cursive;
+  @media screen and (max-width: 992px){
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  a, .contact{
+    font-family: 'Oswald', sans-serif;
     text-decoration: none;
     color: whitesmoke;
     margin-right: 10rem;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 600;
     text-transform: uppercase;
     transition: all 0.15s ease-in-out;
-
+    @media screen and (max-width: 992px){
+      margin-right: 0;
+    }
     &:hover{
       transition: 'ease-in-out', 1s;
-      color: beige;
+      color: rgb(105, 105, 92);
       font-weight: 200;
+      cursor: pointer;
     }
   }
 }
@@ -57,14 +82,14 @@
 .navbar__cart-main{
   width: 60px;
   height: 60px;
-  border-radius: 50%;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-
   div{
     position: fixed;
+    border: solid;
+    border-width: 1px;
     top: 0;
     bottom: 0;
     right: 0;
@@ -74,7 +99,7 @@
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
-    background-color: #e9edebff;
+    background-color: rgba(233, 247, 235, 1.5);
     background-size: cover;
     background-repeat: repeat;
     height: 80vw;

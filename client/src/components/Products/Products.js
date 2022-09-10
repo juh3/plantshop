@@ -2,18 +2,17 @@ import React from 'react'
 import { Grid } from '@mui/material'
 import Product from './Product'
 import usePlants from '../../hooks/usePlants'
-
+import './product.scss'
 
 const Products = ({ addToCart}) => {
   const {plants, loading} = usePlants()
   if(loading) {
     return <p> loading...</p>
   }
-  console.log(plants)
   const filterings = [ "All", "Anthurium", "Philodendron", "Alocasia", "Monstera"]
   return(
-    <div style={{flexGrow: 1}}>
-      <div style = {{ cursor: 'auto', display: 'flex', marginTop: 5, marginLeft: 5}}>
+    <div className='product__main'>
+      <div className='product__filter'>
 
         <form>
           <label for ='filter'> sort by:</label>
@@ -26,9 +25,9 @@ const Products = ({ addToCart}) => {
           </select>
         </form>
       </div>
-      <Grid container justifyContent = "center" alignItems='center' spacing = {4}>
+      <Grid container justifyContent = "center" alignItems='center' spacing = {2}>
         {plants.map(( product) => (
-          <Grid style = {{ display:'flex', alignContent: 'space-evenly' }} item key = {product.id} xs = {24} sm = {18} md = {12} lg = {3}>
+          <Grid style = {{ display:'flex', alignContent: 'center', paddingLeft: '0'}} item key = {product.id} xs = {12} sm = {12} md = {10} lg = {3}>
             <Product product = {product} addToCart = {addToCart}/>
           </Grid>
         ))}

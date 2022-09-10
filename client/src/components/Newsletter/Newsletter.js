@@ -9,7 +9,7 @@ const Newsletter = () => {
        
       </div>
       <div className='input'>
-        <input type = 'email' id ='email' pattern=".+@email\.com" required placeholder='Enter your email'/>
+        <input type = 'email' id ='email' pattern=".+@email\.com" required placeholder='Enter your email' style={{ paddingTop: '1rem', paddingBottom: '1rem'}}/>
         <Button variant = "outlined"> Submit</Button>
       </div>
     </div>

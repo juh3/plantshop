@@ -21,7 +21,8 @@ const Footer = () => {
         </div>
       </div>
       <div className='footer__center'>
-        <p> Made by Juha Anttila </p>
+        <p> Made by Juha Anttila (2022).</p>
+        <p> Code available <a href = "https://github.com/juh3/plantshop"> here</a></p>
       </div>
       <div className='footer__right'>
         <div className='logos'>

@@ -77,7 +77,7 @@ const App = () => {
           <Route path = "*" element = {<Header />} exact />
           <Route path = "/plants" element = {<Shop addToCart = {addToCart}/>} replace />
           <Route path = "/plants/:id" element = {< SinglePlantView addToCart = {addToCart} />} replace/>
-          <Route path ="/cart" element = { <OrderPage cart = {cart}/>} replace />
+          <Route path ="/cart" element = { <OrderPage cart = {cart} changeQuantity = {changeQuantity} />} replace />
         </Routes>
         <Footer />
       </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import './SinglePlantView.scss'
 import WestIcon from '@mui/icons-material/West';
-import { IconButton, Button, containerClasses } from '@mui/material';
+import { IconButton, Button } from '@mui/material';
 import { useQuery } from '@apollo/client';
 import { FIND_PLANT } from '../../apollo/queries';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -36,6 +36,7 @@ const SinglePlantView = ({ addToCart }) => {
         <IconButton onClick = {() => {navigate('/plants')}} aria-label = "Return" size="large">
             <WestIcon fontSize='inherit' />
         </IconButton>
+        <p> Back to shop</p>
       </div>
       <div className='left'>
         <div className='imgContainer'>
@@ -64,7 +65,7 @@ const SinglePlantView = ({ addToCart }) => {
             </IconButton>
           </div>
 
-          <Button style={{ marginLeft: '3rem', backgroundColor: 'rgb(216, 195, 74)', fontFamily:'Roboto, sans-serif', color: 'black'}} variant= "contained" 
+          <Button className ="addToCart" variant= "contained" 
             onClick = {() => addToCart(id, parseInt(document.getElementById('quantity').value))}> Add to Cart </Button>
 
         </div>
