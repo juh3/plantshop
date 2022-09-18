@@ -18,7 +18,6 @@ const Product = ({ product, addToCart }) => {
         maxWidth: 300,
         marginTop: 4,
         marginBottom: 2,
-        marginLeft: 2,
         height: '100%',
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.4)',
       }}
