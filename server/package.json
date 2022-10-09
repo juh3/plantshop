@@ -4,7 +4,8 @@
   "description": "Plantshop backend",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:ui": "rm -rf build && cd ../client/ && npm run build && cp -r build ../server"
   },
   "author": "Juha Anttila",
   "license": "ISC",

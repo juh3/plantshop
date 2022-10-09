@@ -20,7 +20,7 @@ const OrderPage = ({ cart, changeQuantity }) => {
   let total_sum = 0
   const getTotal = (quantity, price) => {
     const total = Math.round(quantity*price*100)/100
-    return <p> {total} € </p>
+    return <p> €{total}</p>
   }
 
   total_sum = cart?.reduce( (previousValue, currentValue) =>
@@ -29,8 +29,6 @@ const OrderPage = ({ cart, changeQuantity }) => {
   total_sum = Math.round(total_sum*100)/100
   return (
     <div className='orderpage__main'>
-
-      
         <div className='orderpage__total'>
           <h1 style={{ }}> Order Information</h1>
           <hr style= {{ marginLeft: '2rem', marginRight: '2rem'}}/>
@@ -49,17 +47,17 @@ const OrderPage = ({ cart, changeQuantity }) => {
               <tbody>
                 <tr>
                   <td>
-                    <img style = {{width: '200px', height: '200px', marginTop: '1rem', marginBottom: '1rem', borderRadius: '2%'}} src = {product.imageUrl} alt = "product" />
+                    <img src = {product.imageUrl} alt = "product" />
                   </td>
-                  <td style={{ display: 'flex', flexDirection: 'column', marginLeft: '3rem', marginTop: '1rem', width: '10vw'}}>
-                    <p style= {{ fontFamily: 'Roboto, sans serif', fontSize:'35px'}}> {product.name}</p>
-                    <p style= {{ fontFamily: 'Roboto, sans serif', fontSize:'20px'}}> {product.family}</p>
+                  <td className='cart__table__productname'>
+                    <p className='species'> {product.name}</p>
+                    <p className = 'family'> {product.family}</p>
                   </td>
-                  <td>
-                    <p style={{marginLeft: '2rem', marginRight: '2rem', fontFamily: 'Roboto'}}> {product.description}</p>
+                  <td className = 'cart__description'>
+                    <p className = 'description'> {product.description}</p>
                   </td>
-                  <td>
-                    <span style={{ fontWeight: '600', fontSize: '25px'}}>
+                  <td className='cart__quantitybuttons'>
+                    <span>
                       <IconButton id ='itembutton' onClick = { () => {changeQuantity('decrement', product.id, 1)}}>
                         <RemoveIcon />
                       </IconButton>
@@ -70,19 +68,20 @@ const OrderPage = ({ cart, changeQuantity }) => {
                       </IconButton>
                     </span>
                   </td>
-                  <td>
-                    <p style={{ marginLeft: '6rem', fontWeight: '600', fontSize: '25px'}}> {getTotal(product.quantity, product.price)}</p>
+                  <td className='cart__total'>
+                    <p> {getTotal(product.quantity, product.price)}</p>
                   </td>
                 </tr>
               </tbody>
               ))}
             </table>
-        <p style={{ float:'right', marginRight: '2rem', fontFamily: 'Roboto', fontSize: '25px', fontWeight:'600'}}> Total sum: {total_sum} €</p>
+        <p className='total__sum'> Total sum: €{total_sum}</p>
          
         </div>
 
-        <h1>My Information</h1>
+        
       <div className='orderpage__input_container'>
+      <h1>My Information</h1>
         <hr/>
         <Formik
           initialValues = {{ firstName: '', lastName: '', country: '', postalCode: '', address: '', email: '', phoneNumber: '', city:''}}
@@ -189,12 +188,13 @@ const OrderPage = ({ cart, changeQuantity }) => {
                       placeholder = "Phonenumber"
                   />
             </div>
-            <Button type = "submit" variant = "contained"> To payment </Button>
+            <div className = 'orderpage__button'>
+              <Button type = "submit" variant = "contained"> To payment </Button>
+            </div>
             </Form>
           )}
           </Formik>
         </div>
-        <hr style={{ marginTop: '3rem'}}/>
 
     </div>
   )

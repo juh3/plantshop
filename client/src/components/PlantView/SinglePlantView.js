@@ -25,6 +25,7 @@ const SinglePlantView = ({ addToCart }) => {
     if( action === 'increment'){
       var count = parseInt(input.value) +1
     }else{
+      // eslint-disable-next-line no-redeclare
       var count = parseInt(input.value) - 1
     }
     count = count < 1 ? 1 : count

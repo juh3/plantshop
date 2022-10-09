@@ -12,10 +12,15 @@ import SinglePlantView from './components/PlantView/SinglePlantView'
 import usePlants from './hooks/usePlants'
 import Footer from './components/Footer/Footer'
 import OrderPage from './components/OrderPage/OrderPage'
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 const App = () => {
   const [cart, setCart] = useState([])
   const { plants, loading } = usePlants()
+
+  const matches = useMediaQuery('(min-width:992px)');
+  console.log(matches)
   if (loading) {
     return <p> fetching data...</p>
   }
@@ -41,6 +46,7 @@ const App = () => {
   }
 
   function changeQuantity(action, id, quantity) {
+    // eslint-disable-next-line array-callback-return
     cart.map((item) => {
       console.log(action)
       if (item.id === id) {
@@ -80,6 +86,7 @@ const App = () => {
           cart={cart}
           handleDelete={handleDelete}
           changeQuantity={changeQuantity}
+          matches = {matches}
         />
         <Routes>
           <Route path="/" element={<Header />} exact />
@@ -100,6 +107,7 @@ const App = () => {
               <OrderPage
                 cart={cart}
                 changeQuantity={changeQuantity}
+                matches = {matches}
               />
             }
             replace

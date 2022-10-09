@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import { Grid } from '@mui/material'
-import Product from './Product'
 import usePlants from '../../hooks/usePlants'
 import './product.scss'
 import ProductGrid from './ProductGrid'
