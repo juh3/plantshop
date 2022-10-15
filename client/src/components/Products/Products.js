@@ -18,8 +18,6 @@ const Products = ({ addToCart }) => {
   ]
 
   const filterPlants= () => {
-    console.log("im hree")
-    console.log(document.getElementById('filter').value)
     
     const familyFilter = document.getElementById('filter').value
     if(familyFilter === 'All'){
@@ -28,7 +26,6 @@ const Products = ({ addToCart }) => {
       return
     }
     setFilteredByFamily(plants.filter( n => n.family === familyFilter))
-    console.log(filteredByFamily)
   }
 
   return (

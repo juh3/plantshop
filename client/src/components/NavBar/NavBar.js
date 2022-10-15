@@ -55,9 +55,7 @@ const NavBar = ({ cart, handleDelete, changeQuantity, matches}) => {
 
       <div className="app__navbar-links">
         <Link to="/plants"> Shop </Link>
-        <a href={`#ourvalues`} replace>
-          Our mission
-        </a>
+        
         <div className="contact" onClick={() => sendEmail()}>
           Contact
         </div>

@@ -6,7 +6,7 @@ import { IconButton } from '@mui/material'
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 
-const OrderPage = ({ cart, changeQuantity }) => {
+const OrderPage = ({ cart, changeQuantity, matches }) => {
   if( cart?.length === 0) {
     return( 
     <div className='empty__shoppingcart'>
@@ -17,6 +17,7 @@ const OrderPage = ({ cart, changeQuantity }) => {
     </div>
     )
   }
+  console.log(matches)
   let total_sum = 0
   const getTotal = (quantity, price) => {
     const total = Math.round(quantity*price*100)/100
@@ -29,59 +30,59 @@ const OrderPage = ({ cart, changeQuantity }) => {
   total_sum = Math.round(total_sum*100)/100
   return (
     <div className='orderpage__main'>
-        <div className='orderpage__total'>
-          <h1 style={{ }}> Order Information</h1>
-          <hr style= {{ marginLeft: '2rem', marginRight: '2rem'}}/>
+      <div className='orderpage__total'>
+        <h1> Order Information</h1>
+        <hr style= {{ marginLeft: '2rem', marginRight: '2rem'}}/>
 
-          <table>
-            <thead>
+        <table>
+          <thead>
+            <tr>
+              <th colSpan = "1"> Product</th>
+              {matches && <th colSpan="1"></th>}
+              {matches && <th colSpan="1"> Description</th>}
+              {matches && <th colSpan = "1"> Quantity</th>}
+              {matches && <th colSpan = "1"> Total</th>}
+            </tr>
+          </thead>
+          {cart.map((product) => (
+            <tbody>
               <tr>
-                <th colSpan = "1"> Product</th>
-                <th colSpan="1"></th>
-                <th colSpan="1"> Description</th>
-                <th colSpan = "1"> Quantity</th>
-                <th colSpan = "1"> Total</th>
-              </tr>
-            </thead>
-            {cart.map((product) => (
-              <tbody>
-                <tr>
-                  <td>
-                    <img src = {product.imageUrl} alt = "product" />
-                  </td>
-                  <td className='cart__table__productname'>
-                    <p className='species'> {product.name}</p>
-                    <p className = 'family'> {product.family}</p>
-                  </td>
-                  <td className = 'cart__description'>
-                    <p className = 'description'> {product.description}</p>
-                  </td>
-                  <td className='cart__quantitybuttons'>
-                    <span>
-                      <IconButton id ='itembutton' onClick = { () => {changeQuantity('decrement', product.id, 1)}}>
-                        <RemoveIcon />
-                      </IconButton>
-                    {product.quantity}
+                <td>
+                  <img src = {product.imageUrl} alt = "product" />
+                </td>
+                <td className='cart__table__productname'>
+                  <p className='species'> {product.name}</p>
+                  <p className = 'family'> {product.family}</p>
+                </td>
+                {matches && <td className = 'cart__description'>
+                  <p className = 'description'> {product.description}</p>
+                </td>}
+                <td className='cart__quantitybuttons'>
+                  <span>
+                    <IconButton id ='itembutton' onClick = { () => {changeQuantity('decrement', product.id, 1)}}>
+                      <RemoveIcon />
+                    </IconButton>
+                    <p>{product.quantity}</p>
 
-                      <IconButton id ='itembutton' onClick = { () => {changeQuantity('increment', product.id, 1)}}>
-                        <AddIcon />
-                      </IconButton>
-                    </span>
-                  </td>
-                  <td className='cart__total'>
-                    <p> {getTotal(product.quantity, product.price)}</p>
-                  </td>
-                </tr>
-              </tbody>
-              ))}
-            </table>
-        <p className='total__sum'> Total sum: €{total_sum}</p>
+                    <IconButton id ='itembutton' onClick = { () => {changeQuantity('increment', product.id, 1)}}>
+                      <AddIcon />
+                    </IconButton>
+                  </span>
+                </td>
+                <td className='cart__total'>
+                  <p> {getTotal(product.quantity, product.price)}</p>
+                </td>
+              </tr>
+            </tbody>
+          ))}
+        </table>
+      <p className='total__sum'> Total sum: €{total_sum}</p>
          
-        </div>
+      </div>
 
         
       <div className='orderpage__input_container'>
-      <h1>My Information</h1>
+        <h1>My Information</h1>
         <hr/>
         <Formik
           initialValues = {{ firstName: '', lastName: '', country: '', postalCode: '', address: '', email: '', phoneNumber: '', city:''}}
@@ -194,8 +195,8 @@ const OrderPage = ({ cart, changeQuantity }) => {
             </Form>
           )}
           </Formik>
+          
         </div>
-
     </div>
   )
 }

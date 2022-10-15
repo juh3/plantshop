@@ -46,13 +46,10 @@
   transform: translate(-50%, -50%);
   color: rgb(26, 16, 13);
   @media screen and (max-width: 992px){
-    margin-top: 10rem;
+    margin-top: 23rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    top: 70%;
-    left:50%;
-    text-align: center;
+
   }
   button{
     margin-top: 2rem;

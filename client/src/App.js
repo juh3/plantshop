@@ -50,7 +50,6 @@ const App = () => {
     cart.map((item) => {
       console.log(action)
       if (item.id === id) {
-        console.log(id, 'the id')
         if (action === 'decrement') {
           if (item.quantity === 1) {
             handleDelete(item.id)

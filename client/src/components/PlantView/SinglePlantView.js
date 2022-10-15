@@ -11,14 +11,12 @@ import AddIcon from '@mui/icons-material/Add';
 
 const SinglePlantView = ({ addToCart }) => {
   const {id} = useParams()
-  console.log(id)
   let navigate = useNavigate()
   const { data, loading } = useQuery( FIND_PLANT, {fetchPolicy: 'cache-and-network', variables: { id: id }})
   if(loading){
     return <p> loading data...</p>
   }
   const plant = data.findPlant
-  console.log(plant)
 
   const updateValue = (action) => {
     var input = document.getElementById('quantity')
