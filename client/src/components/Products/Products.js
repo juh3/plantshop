@@ -32,8 +32,8 @@ const Products = ({ addToCart }) => {
     <div className="product__main">
       <div className="product__filter">
         <form>
-          <label for="filter"> sort by:</label>
-          <select id="filter" name="filter" onChange={() => {filterPlants()}}>
+          <label for="filter" style={{ fontFamily: 'Roboto, sans serif'}}> sort by:</label>
+          <select id="filter" name="filter" style={{ fontFamily: 'Roboto, sans serif'}} onChange={() => {filterPlants()}}>
             {filterings.map((family, i) => (
               <option key={i} value = {family}>{family}</option>
             ))}
