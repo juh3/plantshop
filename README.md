@@ -4,7 +4,7 @@ This is my first ever project outside courses. It is using React.js in the front
 
 There's still some work to do however, but I still chose to publish this site as it's almost done and showcases my skills.
 
-You can find the site running at ballofroots.com.
+You can find the site running at ballofroots.com. The site works best for mobile phones and laptop screens and up.
 
 TO-DO:
   save the cart to the local storage
