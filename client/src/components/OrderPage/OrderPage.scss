@@ -47,7 +47,7 @@
     
   
     @media screen and (max-width: 992px){
-     margin-left: 0; 
+     margin-left: 0rem; 
      margin-right: 0rem;
     }
     
@@ -60,6 +60,7 @@
         justify-content: center;
         margin-left: 1rem;
         margin-right: 1rem;
+        padding-left: 0rem;
       }
       input{
         margin-left: 2rem;
@@ -68,7 +69,8 @@
         height: 3rem;
         width: 60rem;
         @media screen and (max-width: 992px){
-          width: 20rem;
+          width: auto;
+          margin-left: 0rem;
         }
       }
       
@@ -77,6 +79,7 @@
 
   }
   .orderpage__button{
+    margin-bottom: 2rem;
     @media screen and (max-width: 992px){
       display: flex;
       justify-content: center;

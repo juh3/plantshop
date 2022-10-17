@@ -12,15 +12,13 @@ import SinglePlantView from './components/PlantView/SinglePlantView'
 import usePlants from './hooks/usePlants'
 import Footer from './components/Footer/Footer'
 import OrderPage from './components/OrderPage/OrderPage'
-import useMediaQuery from '@mui/material/useMediaQuery';
-
+import useMediaQuery from '@mui/material/useMediaQuery'
 
 const App = () => {
   const [cart, setCart] = useState([])
   const { plants, loading } = usePlants()
-
-  const matches = useMediaQuery('(min-width:992px)');
-  console.log(matches)
+  const cart_width = useMediaQuery('(min-width:1399px)')
+  const matches = useMediaQuery('(min-width:992px)')
   if (loading) {
     return <p> fetching data...</p>
   }
@@ -85,7 +83,7 @@ const App = () => {
           cart={cart}
           handleDelete={handleDelete}
           changeQuantity={changeQuantity}
-          matches = {matches}
+          matches={cart_width}
         />
         <Routes>
           <Route path="/" element={<Header />} exact />
@@ -106,7 +104,7 @@ const App = () => {
               <OrderPage
                 cart={cart}
                 changeQuantity={changeQuantity}
-                matches = {matches}
+                matches={matches}
               />
             }
             replace

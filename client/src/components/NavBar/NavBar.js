@@ -9,12 +9,9 @@ import { HiX } from 'react-icons/hi'
 import RemoveIcon from '@mui/icons-material/Remove'
 import AddIcon from '@mui/icons-material/Add'
 
-
-
-const NavBar = ({ cart, handleDelete, changeQuantity, matches}) => {
+const NavBar = ({ cart, handleDelete, changeQuantity, matches }) => {
   let navigate = useNavigate()
   const [toggle, setToggle] = useState(false)
-
 
   let total = 0
   let cart_counter = 0
@@ -40,9 +37,6 @@ const NavBar = ({ cart, handleDelete, changeQuantity, matches}) => {
     navigate('/cart')
   }
 
-  
-  
-
   const sendEmail = () => {
     window.location = 'mailto:juha.t.anttila@aalto.fi'
   }
@@ -55,7 +49,7 @@ const NavBar = ({ cart, handleDelete, changeQuantity, matches}) => {
 
       <div className="app__navbar-links">
         <Link to="/plants"> Shop </Link>
-        
+
         <div className="contact" onClick={() => sendEmail()}>
           Contact
         </div>
@@ -72,7 +66,7 @@ const NavBar = ({ cart, handleDelete, changeQuantity, matches}) => {
           {cart_counter}
         </IconButton>
 
-        {(toggle&& matches) && (
+        {toggle && matches && (
           <div className="navbar__cart-main">
             <motion.div
               whileInView={{ x: [300, 0] }}
@@ -147,11 +141,8 @@ const NavBar = ({ cart, handleDelete, changeQuantity, matches}) => {
           </div>
         )}
 
-        {(toggle && !matches) && (
-          handleNavigation()
-        )}
+        {toggle && !matches && handleNavigation()}
       </div>
-
     </div>
   )
 }
